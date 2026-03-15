@@ -22,6 +22,11 @@ public class RaidController {
         return raidService.getAllRaids();
     }
 
+    @GetMapping("/{name}")
+    public RaidResponseDto getRaidByName(@PathVariable String name) {
+        return raidService.getRaidByName(name);
+    }
+
     @PostMapping
     public RaidResponseDto createRaid(@RequestBody CreateRaidRequestDto requestDto){
         return raidService.createRaid(requestDto);

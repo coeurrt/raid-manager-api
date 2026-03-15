@@ -21,6 +21,13 @@ public class RaidRepository {
         return raids;
     }
 
+    public Raid findByName(String name){
+        return raids.stream()
+                .filter(raid -> raid.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
     public Raid save(Raid raid){
         raids.add(raid);
         return raid;

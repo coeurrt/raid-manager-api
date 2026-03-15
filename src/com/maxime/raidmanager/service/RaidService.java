@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
 public class RaidService {
 
@@ -31,6 +29,15 @@ public class RaidService {
     public RaidResponseDto createRaid(CreateRaidRequestDto requestDto){
         Raid raid = RaidMapper.toEntity(requestDto);
         this.raidRepository.save(raid);
+        return RaidMapper.toResponseDto(raid);
+    }
+
+    public RaidResponseDto getRaidByName(String name){
+        Raid raid = this.raidRepository.findByName(name);
+
+        if (raid == null)
+            return null;
+
         return RaidMapper.toResponseDto(raid);
     }
 
