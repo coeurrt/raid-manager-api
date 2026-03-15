@@ -1,10 +1,12 @@
 package com.maxime.raidmanager.repository;
 
 import com.maxime.raidmanager.entity.Raid;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class RaidRepository {
 
     public List<Raid> findAll() {
