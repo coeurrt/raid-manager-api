@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RaidRepository {
@@ -21,11 +22,10 @@ public class RaidRepository {
         return raids;
     }
 
-    public Raid findByName(String name){
+    public Optional<Raid> findByName(String name){
         return raids.stream()
                 .filter(raid -> raid.getName().equals(name))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 
     public Raid save(Raid raid){
