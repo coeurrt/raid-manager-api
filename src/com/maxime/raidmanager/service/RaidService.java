@@ -1,6 +1,6 @@
 package com.maxime.raidmanager.service;
 
-import com.maxime.raidmanager.entity.Raid;
+import com.maxime.raidmanager.dto.RaidResponseDto;
 import com.maxime.raidmanager.repository.RaidRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,12 @@ public class RaidService {
         this.raidRepository = raidRepository;
     }
 
-    public List<Raid> getAllRaids(){
-        return raidRepository.findAll();
+    public List<RaidResponseDto> getAllRaids() {
+
+        return raidRepository.findAll()
+                .stream()
+                .map(raid -> new RaidResponseDto(raid.getName(), raid.getPlayers()))
+                .toList();
     }
 
 }

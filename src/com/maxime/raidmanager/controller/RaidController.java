@@ -1,5 +1,6 @@
 package com.maxime.raidmanager.controller;
 
+import com.maxime.raidmanager.dto.RaidResponseDto;
 import com.maxime.raidmanager.entity.Raid;
 import com.maxime.raidmanager.service.RaidService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public class RaidController {
     }
 
     @GetMapping
-    public List<Raid> getRaids() {
+    public List<RaidResponseDto> getRaids() {
         return raidService.getAllRaids();
     }
 
