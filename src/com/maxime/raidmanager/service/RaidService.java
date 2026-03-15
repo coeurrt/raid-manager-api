@@ -30,6 +30,7 @@ public class RaidService {
 
     public RaidResponseDto createRaid(CreateRaidRequestDto requestDto){
         Raid raid = RaidMapper.toEntity(requestDto);
+        this.raidRepository.save(raid);
         return RaidMapper.toResponseDto(raid);
     }
 

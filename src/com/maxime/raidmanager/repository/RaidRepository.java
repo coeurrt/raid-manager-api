@@ -9,13 +9,20 @@ import java.util.List;
 @Repository
 public class RaidRepository {
 
-    public List<Raid> findAll() {
-        List<Raid> raids = new ArrayList<>();
+    private final List<Raid> raids = new ArrayList<>();
 
+    public RaidRepository() {
         raids.add(new Raid("Molten Core", 40));
         raids.add(new Raid("Icecrown Citadel", 25));
         raids.add(new Raid("Black Temple", 25));
+    }
 
+    public List<Raid> findAll() {
         return raids;
+    }
+
+    public Raid save(Raid raid){
+        raids.add(raid);
+        return raid;
     }
 }
