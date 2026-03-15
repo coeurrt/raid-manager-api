@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RaidService {
@@ -29,18 +28,18 @@ public class RaidService {
                 .toList();
     }
 
-    public RaidResponseDto createRaid(CreateRaidRequestDto requestDto){
+    public RaidResponseDto createRaid(CreateRaidRequestDto requestDto) {
         Raid raid = RaidMapper.toEntity(requestDto);
         this.raidRepository.save(raid);
         return RaidMapper.toResponseDto(raid);
     }
 
-    public RaidResponseDto getRaidByName(String name){
+    public RaidResponseDto getRaidById(Long id) {
         Raid raid = raidRepository
-                .findByName(name)
+                .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
-                        "Raid not found: " + name
+                        "Raid not found: " + id
                 ));
 
         return RaidMapper.toResponseDto(raid);

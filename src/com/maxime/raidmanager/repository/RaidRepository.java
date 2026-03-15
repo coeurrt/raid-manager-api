@@ -11,24 +11,33 @@ import java.util.Optional;
 public class RaidRepository {
 
     private final List<Raid> raids = new ArrayList<>();
+    private long nextId = 1;
 
     public RaidRepository() {
-        raids.add(new Raid("Molten Core", 40));
-        raids.add(new Raid("Icecrown Citadel", 25));
-        raids.add(new Raid("Black Temple", 25));
+        raids.add(new Raid(nextId, "Molten Core", 40));
+        nextId++;
+        raids.add(new Raid(nextId, "Icecrown Citadel", 25));
+        nextId++;
+        raids.add(new Raid(nextId, "Black Temple", 25));
+        nextId++;
     }
 
     public List<Raid> findAll() {
         return raids;
     }
 
-    public Optional<Raid> findByName(String name){
+    public Optional<Raid> findById(Long id) {
         return raids.stream()
-                .filter(raid -> raid.getName().equals(name))
+                .filter(raid -> raid.getId().equals(id))
                 .findFirst();
     }
 
-    public Raid save(Raid raid){
+    public Raid save(Raid raid) {
+        if (raid.getId() == null) {
+            raid.setId(nextId);
+            nextId++;
+        }
+
         raids.add(raid);
         return raid;
     }

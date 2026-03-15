@@ -1,18 +1,16 @@
 package com.maxime.raidmanager.dto;
 
-import com.maxime.raidmanager.entity.Raid;
-
-import java.util.List;
-
 public class RaidResponseDto {
+    private Long id;
     private String name;
     private int players;
 
     public RaidResponseDto() {
     }
 
-    public RaidResponseDto(String name, int players) {
+    public RaidResponseDto(Long id, String name, int players) {
         this.name = name;
+        this.id = id;
         this.players = players;
     }
 
@@ -22,5 +20,9 @@ public class RaidResponseDto {
 
     public int getPlayers() {
         return players;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
