@@ -1,17 +1,14 @@
 package com.maxime.raidmanager.dto;
 
-import com.maxime.raidmanager.entity.Raid;
+public class CreateRaidRequestDto {
 
-import java.util.List;
-
-public class RaidResponseDto {
     private String name;
     private int players;
 
-    public RaidResponseDto() {
+    public CreateRaidRequestDto() {
     }
 
-    public RaidResponseDto(String name, int players) {
+    public CreateRaidRequestDto(String name, int players) {
         this.name = name;
         this.players = players;
     }

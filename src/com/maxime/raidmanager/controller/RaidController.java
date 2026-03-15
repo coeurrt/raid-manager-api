@@ -1,11 +1,9 @@
 package com.maxime.raidmanager.controller;
 
+import com.maxime.raidmanager.dto.CreateRaidRequestDto;
 import com.maxime.raidmanager.dto.RaidResponseDto;
-import com.maxime.raidmanager.entity.Raid;
 import com.maxime.raidmanager.service.RaidService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,11 @@ public class RaidController {
     @GetMapping
     public List<RaidResponseDto> getRaids() {
         return raidService.getAllRaids();
+    }
+
+    @PostMapping
+    public RaidResponseDto createRaid(@RequestBody CreateRaidRequestDto requestDto){
+        return raidService.createRaid(requestDto);
     }
 
 }
